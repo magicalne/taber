@@ -7,13 +7,12 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div ng-controller='todoCtrl' ng-cloak layout-gt-sm="row" layout="column">
+	<div ng-controller='todoCtrl' ng-cloak layout="column" class="md-inline-form">
 		
-	<md-content>
+	<md-content md-theme="docs-dark">
 		<div layout-gt-sm="row">
-			<md-input-container class="md-block" flex-gt-sm>
-				<label>Taber</label>
-				<input ng-model="tabname" />
+			<md-input-container class="md-block" md-no-float>
+				<input ng-model="tabname" placeholder="Taber"/>
 			</md-input-container>
 		</div>
 		<md-list flex>
