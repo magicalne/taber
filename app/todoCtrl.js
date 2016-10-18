@@ -1,6 +1,12 @@
 'use strict';
 
-angular.module('app').controller('todoCtrl', function ($scope, todoStorage) {
+var app = angular.module('app');
+
+app.config(function($mdThemingProvider) {
+	$mdThemingProvider.theme('default').dark();
+});
+
+app.controller('todoCtrl', function ($scope, todoStorage) {
 
 	todoStorage.getAllTabs()
 	.then(function(tabs) {

@@ -9,18 +9,15 @@
 <body>
 	<div ng-controller='todoCtrl' ng-cloak layout="column" class="md-inline-form">
 		
-	<md-content md-theme="docs-dark">
-		<div layout-gt-sm="row">
-			<md-input-container class="md-block" md-no-float>
-				<input ng-model="tabname" placeholder="Taber"/>
-			</md-input-container>
-		</div>
+	<md-content>
+		<md-input-container class="md-block" md-no-float>
+			<input ng-model="tabname" placeholder="Taber"/>
+		</md-input-container>
 		<md-list flex>
 			<md-list-item class="md-3-line" ng-repeat="item in tabs" ng-click="active(item.id)">
 				<img ng-src="{{item.favIconUrl}}" class="md-avatar" />
 				<div class="md-list-item-text" layout="column">
 					<h3>{{ item.title }}</h3>
-					<h4>{{ item.id }}</h4>
 					<p>{{ item.url }}</p>
 				</div>
 			</md-list-item>
