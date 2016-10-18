@@ -11,7 +11,7 @@
 		
 	<md-content>
 		<md-input-container class="md-block" md-no-float>
-			<input ng-model="tabname" placeholder="Taber"/>
+			<input ng-model="keyword" placeholder="Taber" ng-change="onChange()"/>
 		</md-input-container>
 		<md-list flex>
 			<md-list-item class="md-3-line" ng-repeat="item in tabs" ng-click="active(item.id)">
@@ -30,6 +30,7 @@
 		<script type="text/javascript" src="lib/angular-material/angular-material.min.js"></script>
 		<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
 		<script type="text/javascript" src="lib/angular-aria/angular-aria.min.js"></script>
+		<script type="text/javascript" src="lib/string_score.min.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/todoCtrl.js"></script>
     <script type="text/javascript" src="app/todoStorage.js"></script>
