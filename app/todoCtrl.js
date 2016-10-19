@@ -11,6 +11,7 @@ app.controller('todoCtrl', function ($scope, todoStorage) {
 	todoStorage.getAllTabs()
 	.then(function(tabs) {
 		$scope.tabs = tabs;
+		$scope.filteredTabs = tabs;
 	});
 
 	$scope.active = function(id) {
@@ -18,33 +19,31 @@ app.controller('todoCtrl', function ($scope, todoStorage) {
 	};
 
 	$scope.onChange= function() {
-		console.log('test')
 		//1. iterator tabs, calculate string_score
 		//2. save result in to an array
 		//3. sort the array
-		$scope.tabs = calculate($scope.tabs, $scope.keyword);
+		$scope.filteredTabs= calculate($scope.tabs, $scope.keyword.trim());
 		
 	}
 
 	var calculate = function(tabs, keyword) {
-		if (keyword) {
-			var titleScore, urlScore, title, url;
-			for (var index = 0; index < tabs.length; index ++) {
-				title = tabs[index].title;
-				url = tabs[index].url;
-				titleScore = (title ? keyword.score(title) : 0);
-				urlScore = (url ? keyword.score(url) : 0);
-				tabs[index].score = (titleScore > urlScore) ? titleScore : urlScore;
+		if (!!keyword && !!tabs) {
+			if (keyword === '') {
+				return tabs;
 			}
-			return tabs.sort(function(a, b) {
-				if (a.score > b.score) {
-					return 1;
-				} else if (a.score < b.score) {
-					return -1;
-				} else {
-					return 0;
-				}
-			})
+			var titleScore, urlScore, title, url;
+			return tabs.map(function(tab) {
+				title = tab.title;
+				url = tab.url;
+				titleScore = (title ? title.score(keyword) : 0);
+				urlScore = (url ? url.score(keyword) : 0);
+				tab.score = (titleScore > urlScore) ? titleScore : urlScore;
+				return tab;
+			}).filter(function(tab) {
+				return tab.score > 0;
+			}).sort(function(a, b) {
+				return (b.score - a.score);
+			});
 		} else {
 			return tabs;
 		}
