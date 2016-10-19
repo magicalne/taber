@@ -6,9 +6,9 @@ app.config(function($mdThemingProvider) {
 	$mdThemingProvider.theme('default').dark();
 });
 
-app.controller('todoCtrl', function ($scope, todoStorage) {
+app.controller('taberController', function ($scope, taberService ) {
 
-	todoStorage.getAllTabs()
+	taberService.getAllTabs()
 	.then(function(tabs) {
 		$scope.tabs = tabs;
 		$scope.filteredTabs = tabs;

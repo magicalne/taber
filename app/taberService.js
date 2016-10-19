@@ -1,4 +1,4 @@
-angular.module('app').service('todoStorage', function ($q) {
+angular.module('app').service('taberService', function ($q) {
 
 	this.getAllTabs = function() {
 		var deferred = $q.defer();
