@@ -49,3 +49,13 @@ app.controller('taberController', function ($scope, taberService ) {
 		}
 	}
 });
+
+app.directive('taberEnter', function() {
+	return function(scope, element) {
+		element.bind("keydown keypress", function(event) {
+			if (event.which === 13) {
+				scope.active(scope.filteredTabs[0].id);
+			}
+		})
+	}
+})

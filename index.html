@@ -11,7 +11,7 @@
 		
 	<md-content>
 		<md-input-container class="md-block" md-no-float>
-			<input ng-model="keyword" placeholder="Taber" ng-change="onChange()"/>
+			<input ng-model="keyword" placeholder="Taber" ng-change="onChange()" taber-enter/>
 		</md-input-container>
 		<md-list flex>
 			<md-list-item class="md-3-line" ng-repeat="item in filteredTabs" ng-click="active(item.id)">
