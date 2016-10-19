@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name"            : "ng-Todo",
-  "description"     : "Minimal todo app for minimalist",
-  "short_name"      : "ng-Todo",
+  "name"            : "taber",
+  "description"     : "Switch between tabs in a popup, effectively! ",
+  "short_name"      : "taber",
   "version"         : "0.1",
   "browser_action": {
     "default_popup": "index.html",
