@@ -14,11 +14,10 @@
 			<input ng-model="keyword" placeholder="Taber" ng-change="onChange()" taber-enter/>
 		</md-input-container>
 		<md-list flex>
-			<md-list-item class="md-3-line" ng-repeat="item in filteredTabs" ng-click="active(item.id)">
+			<md-list-item ng-repeat="item in filteredTabs" ng-click="active(item.id)">
 				<img ng-src="{{item.favIconUrl}}" class="md-avatar" />
 				<div class="md-list-item-text" layout="column">
 					<h3>{{ item.title }}</h3>
-					<p>{{ item.url }}</p>
 				</div>
 			</md-list-item>
 		</md-list>
