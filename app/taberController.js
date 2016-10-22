@@ -2,7 +2,7 @@
 
 var app = angular.module('app');
 
-app.controller('taberController', function ($scope, taberService ) {
+app.controller('taberController', function ($scope, $sce, taberService ) {
 
 	taberService.getAllTabs()
 	.then(function(tabs) {
@@ -22,8 +22,11 @@ app.controller('taberController', function ($scope, taberService ) {
 		
 	};
 
+	var spanStart = '<span class="hightlight">';
+	var spanEnd = '</span>';
 	$scope.omit = function(title) {
-		return (title.length >= 30 ? title.substring(0, 27) + '...' : title);
+		var omitTitle = (title.length >= 30 ? title.substring(0, 27) + '...' : title);
+		return $sce.trustAsHtml(taberService.highlightFilter(omitTitle, $scope.keyword, spanStart, spanEnd));
 	}
 
 	var calculate = function(tabs, keyword) {

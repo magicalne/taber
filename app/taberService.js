@@ -7,4 +7,31 @@ angular.module('app').service('taberService', function ($q) {
 		});
 		return deferred.promise;
 	}
+
+	this.highlightFilter = function(target, keyword, htmlStart, htmlEnd) {
+		if (!keyword || keyword.length === 0) {
+			return target;
+		}
+		var result = '';
+		var isHightlighten = false;
+		for (var index = 0; index < target.length; index ++) {
+			if (keyword.indexOf(target[index]) >= 0) {
+				if (isHightlighten) {
+					result += target[index];
+				} else {
+					isHightlighten = true;
+					result += (htmlStart + target[index]);
+				}
+			} else {
+				if (isHightlighten) {
+					isHightlighten = false;
+					result += (htmlEnd + target[index]);
+				} else {
+					result += target[index];
+				}
+			}
+		}
+
+		return result;
+	}
 });
