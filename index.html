@@ -17,7 +17,7 @@
 			<md-list-item ng-repeat="item in filteredTabs" ng-click="active(item.id)">
 				<img ng-src="{{item.favIconUrl}}" class="md-avatar" />
 				<div class="md-list-item-text" layout="column">
-					<h3>{{ item.title }}</h3>
+					<h3>{{ omit(item.title) }}</h3>
 				</div>
 			</md-list-item>
 		</md-list>

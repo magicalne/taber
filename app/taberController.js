@@ -20,10 +20,14 @@ app.controller('taberController', function ($scope, taberService ) {
 
 	$scope.onChange= function() {
 		//1. iterator tabs, calculate string_score
-		//2. save result in to an array
-		//3. sort the array
+		//2. save 
+		//3. sort
 		$scope.filteredTabs= calculate($scope.tabs, $scope.keyword.trim());
 		
+	};
+
+	$scope.omit = function(title) {
+		return (title.length >= 30 ? title.substring(0, 27) + '...' : title);
 	}
 
 	var calculate = function(tabs, keyword) {
