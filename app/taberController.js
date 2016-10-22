@@ -2,10 +2,6 @@
 
 var app = angular.module('app');
 
-app.config(function($mdThemingProvider) {
-	$mdThemingProvider.theme('default').dark();
-});
-
 app.controller('taberController', function ($scope, taberService ) {
 
 	taberService.getAllTabs()
