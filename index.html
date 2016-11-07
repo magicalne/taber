@@ -11,7 +11,7 @@
 		
 	<md-content>
 		<md-input-container class="md-block" md-no-float>
-			<input ng-model="keyword" placeholder="Taber" md-autofocus ng-change="onChange()" taber-enter/>
+			<input ng-model="keyword" placeholder="Taber" ng-change="onChange()" taber-enter autofocus />
 		</md-input-container>
 		<md-list flex>
 			<md-list-item ng-repeat="item in filteredTabs" ng-click="active(item.id)" class="md-focused">
