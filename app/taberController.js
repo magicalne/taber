@@ -55,9 +55,14 @@ app.controller('taberController', function ($scope, $sce, taberService ) {
 
 app.directive('taberEnter', function() {
 	return function(scope, element) {
-		element.bind("keydown keypress", function(event) {
+		element.bind("keydown", function(event) {
 			if (event.which === 13) {
-				scope.active(scope.filteredTabs[0].id);
+				if (scope.filteredTabs.length > 0) {
+					scope.active(scope.filteredTabs[0].id);
+				} else {
+					var googleUrl = 'http://google.com/#q=';
+					chrome.tabs.create({url: googleUrl + scope.keyword})
+				}
 			}
 		})
 	}
